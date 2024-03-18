@@ -3,6 +3,7 @@ package com.hyun.tpmanbo.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.firebase.auth.FirebaseAuth
 import com.hyun.tpmanbo.R
 import com.hyun.tpmanbo.databinding.ActivityLoginBinding
 
@@ -18,5 +19,9 @@ class LoginActivity : AppCompatActivity() {
                                             finish()}
         binding.layoutSignup.setOnClickListener { startActivity(Intent(this,SignupActivity::class.java)) }
         binding.layoutEmailLogin.setOnClickListener { startActivity(Intent(this, LoginEmailActivity::class.java)) }
+
+
+
+
     }
 }
