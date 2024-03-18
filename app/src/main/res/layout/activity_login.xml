@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LoginActivity"
+    android:background="@drawable/bg_bg"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/iv_title"
+        android:layout_width="276dp"
+        android:layout_height="276dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@drawable/login_logo"
+        android:layout_alignParentEnd="true"/>
+
+
+    <TextView
+        android:id="@+id/tv_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="서로만보기를 둘러보세요. >"
+        android:fontFamily="@font/font_mitme"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/tv_login"
+        android:background="@drawable/bg_tv_go"
+        android:layout_marginBottom="32dp"
+        android:textSize="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="간편하게 로그인하기 "
+        android:layout_below="@id/iv_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:textSize="24sp"
+        android:fontFamily="@font/font_mitme"
+        android:textColor="@color/black"
+        />
+
+    <LinearLayout
+        android:id="@+id/layout_btns_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/tv_login"
+        android:gravity="center">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_kakao"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/icon_kakako"
+            android:layout_margin="20dp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_google"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/icon_google"
+            android:layout_margin="20dp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_naver"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/icon_naver"
+            android:layout_margin="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_email_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/btn_box"
+        android:padding="4dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/layout_btns_login">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디로 로그인"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/font_mitme"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/btn_box"
+        android:padding="4dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginTop="32dp"
+        android:layout_below="@id/layout_email_login">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/font_mitme" />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</RelativeLayout>

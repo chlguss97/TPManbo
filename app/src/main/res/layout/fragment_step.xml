@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp">
+
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="만난날을 알려주세요."
+            android:fontFamily="@font/font_mitme"
+            android:background="@drawable/step_box"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="6dp"
+            android:textSize="24sp"
+            android:layout_weight="8"/>
+
+        <ImageView
+            android:id="@+id/iv_set"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_settings_24"
+            android:background="@drawable/step_box"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp">
+
+
+        <TextView
+            android:id="@+id/tv_balloon_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/marpoong"
+            android:fontFamily="@font/font_mitme"
+            android:gravity="center"
+            android:text=" 1,234 걸음 "
+            android:textSize="24sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_balloon_count2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/marpoong2"
+            android:fontFamily="@font/font_mitme"
+            android:gravity="center"
+            android:text=" 1,234 걸음 "
+            android:textSize="24sp"
+            android:layout_weight="1"/>
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/layout_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:src="@drawable/profle"
+            android:layout_weight="1" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_profile2"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:src="@drawable/profle"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="User 1"
+            android:fontFamily="@font/font_mitme"
+            android:textSize="28sp"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/tv_nickname2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="User 2"
+            android:fontFamily="@font/font_mitme"
+            android:textSize="28sp"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_count_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="오늘 우리는.."
+        android:fontFamily="@font/font_mitme"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:layout_marginTop="48dp"/>
+
+    <TextView
+        android:id="@+id/tv_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="총 4,567 걸음"
+        android:fontFamily="@font/font_mitme"
+        android:textSize="28sp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/count_box"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_count_point_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="누적 발자국"
+        android:fontFamily="@font/font_mitme"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:layout_marginTop="48dp"/>
+
+    <TextView
+        android:id="@+id/tv_count_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="x,xxx 발자국"
+        android:fontFamily="@font/font_mitme"
+        android:textSize="28sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/count_box2"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:gravity="center"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
+

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/container_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"/>
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        app:backgroundTint="@color/blue">
+        
+        
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/blue"
+            app:menu="@menu/menu_bnv"
+            style="@style/Widget.MaterialComponents.BottomNavigationView"
+            app:itemIconTint="@color/deeppink"
+            app:itemTextColor="@color/deeppink"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            app:itemRippleColor="@color/deepblue"/>
+
+
+        
+        
+        
+    </com.google.android.material.bottomappbar.BottomAppBar>
+    
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/bnv"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:backgroundTint="@color/deeppink"
+        android:src="@drawable/baseline_refresh_24"/>
+    
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
