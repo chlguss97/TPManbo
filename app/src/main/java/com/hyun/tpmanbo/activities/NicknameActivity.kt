@@ -15,5 +15,6 @@ class NicknameActivity : AppCompatActivity() {
 
 
         binding.btnStart.setOnClickListener { startActivity(Intent(this,MainActivity::class.java)) }
+        binding.toolbar.setOnClickListener{ finish()}
     }
 }

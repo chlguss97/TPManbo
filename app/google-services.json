@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "315920479715",
+    "project_id": "tpmanbo",
+    "storage_bucket": "tpmanbo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315920479715:android:80a03f3c2bca6083795cd6",
+        "android_client_info": {
+          "package_name": "com.hyun.tpmanbo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaBQoPm6p_X1ern3NZQvMrkFpxSqbtW40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
