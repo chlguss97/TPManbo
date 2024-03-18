@@ -41,10 +41,8 @@ class SignupActivity : AppCompatActivity() {
                 return@setOnClickListener
             }else if (email =="" || password=="" || password2=="" ){
                 Toast.makeText(this, "아이디와 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
-            }else if (email== auth.get)
-
-            else {
-
+                return@setOnClickListener
+            } else {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
