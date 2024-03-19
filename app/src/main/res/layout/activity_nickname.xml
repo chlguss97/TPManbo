@@ -61,7 +61,6 @@
             android:layout_marginLeft="64dp"
             android:layout_marginRight="64dp"
             android:layout_weight="1.6"
-            android:paddingBottom="16dp"
             android:layout_marginBottom="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
