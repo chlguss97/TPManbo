@@ -7,7 +7,9 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.hyun.tpmanbo.G
 import com.hyun.tpmanbo.R
+import com.hyun.tpmanbo.User
 import com.hyun.tpmanbo.databinding.ActivityLoginEmailBinding
 import com.hyun.tpmanbo.databinding.ActivityNicknameBinding
 import com.hyun.tpmanbo.databinding.ActivitySignupBinding
@@ -32,6 +34,7 @@ class LoginEmailActivity : AppCompatActivity() {
                 if(task.isSuccessful){
                     Toast.makeText(this, "로그인을 성공하였습니다", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this,NicknameActivity::class.java))
+                    G.userAccount= User(email,password)
                     finish()
                 }else(Toast.makeText(this, "로그인에 실패하였습니다. ${task.exception?.message}", Toast.LENGTH_SHORT).show())
             }

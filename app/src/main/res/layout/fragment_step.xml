@@ -52,12 +52,13 @@
             android:id="@+id/tv_balloon_count"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/marpoong"
+            android:layout_weight="1"
+
             android:fontFamily="@font/font_mitme"
             android:gravity="center"
             android:text=" 1,234 걸음 "
-            android:textSize="24sp"
-            android:layout_weight="1"/>
+            android:background="@drawable/marpoong"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/tv_balloon_count2"

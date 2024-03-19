@@ -6,5 +6,6 @@ data class User(
     var uid : String = "",
     var nickName : String= "",
     var profile : String = "",
-    var count : String = ""
+    var count : String = "",
+    var date : String= ""
 )

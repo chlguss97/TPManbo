@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.tvGo.setOnClickListener { startActivity(Intent(this,MainActivity::class.java))
-                                            finish()}
+            finish()}
         binding.layoutSignup.setOnClickListener { startActivity(Intent(this,SignupActivity::class.java)) }
         binding.layoutEmailLogin.setOnClickListener { startActivity(Intent(this, LoginEmailActivity::class.java)) }
 
