@@ -7,5 +7,6 @@ class G {
         var stepcount : String? = null
         var userAccount : User? = null
         var diffInMillis : Long? = null
+        var nickname : String? = null
     }
 }

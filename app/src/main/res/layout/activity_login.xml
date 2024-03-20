@@ -34,6 +34,7 @@
         android:background="@drawable/bg_tv_go"
         android:layout_marginBottom="32dp"
         android:textSize="16dp"
+        android:textColor="#A3A4A5"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingLeft="20dp"
@@ -49,7 +50,7 @@
         android:layout_marginTop="120dp"
         android:textSize="24sp"
         android:fontFamily="@font/font_mitme"
-        android:textColor="@color/black"
+        android:textColor="#A3A4A5"
         />
 
     <LinearLayout
@@ -100,7 +101,7 @@
             android:layout_height="wrap_content"
             android:text="아이디로 로그인"
             android:textSize="24sp"
-            android:textColor="@color/black"
+            android:textColor="#62AAEF"
             android:fontFamily="@font/font_mitme"
             />
 
@@ -112,7 +113,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/btn_box"
+        android:background="@drawable/btn_box2"
         android:padding="4dp"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
@@ -124,7 +125,7 @@
             android:layout_height="wrap_content"
             android:text="회원가입"
             android:textSize="24sp"
-            android:textColor="@color/black"
+            android:textColor="@color/deepdeeppink"
             android:fontFamily="@font/font_mitme" />
 
     </LinearLayout>

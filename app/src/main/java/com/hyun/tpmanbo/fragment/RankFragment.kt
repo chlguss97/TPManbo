@@ -5,19 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.hyun.tpmanbo.databinding.FragmentInfoBinding
+import com.hyun.tpmanbo.databinding.FragmentRankBinding
 
-class InfoFragment : Fragment(){
+class RankFragment : Fragment() {
 
-    val binding by lazy { FragmentInfoBinding.inflate(layoutInflater) }
+    lateinit var binding : FragmentRankBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding= FragmentRankBinding.inflate(layoutInflater)
 
         return binding.root
     }
-
 }

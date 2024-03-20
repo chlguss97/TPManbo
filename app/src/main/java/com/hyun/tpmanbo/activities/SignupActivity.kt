@@ -1,5 +1,4 @@
 package com.hyun.tpmanbo.activities
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +8,9 @@ import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.hyun.tpmanbo.G
 import com.hyun.tpmanbo.R
+import com.hyun.tpmanbo.User
 import com.hyun.tpmanbo.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
@@ -22,12 +23,7 @@ class SignupActivity : AppCompatActivity() {
 
 
         binding.btnSignup.setOnClickListener {
-            startActivity(
-                Intent(
-                    this,
-                    NicknameActivity::class.java
-                )
-            )
+            startActivity(Intent(this, NicknameActivity::class.java))
         }
         binding.toolbar.setOnClickListener { finish() }
 
@@ -47,36 +43,39 @@ class SignupActivity : AppCompatActivity() {
 
 
                             // 사용 가능한 이메일인 경우 회원가입 진행
-                            auth.createUserWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(this) { task ->
-                                    if (task.isSuccessful) {
-                                        // 회원가입 성공
-                                        val user = auth.currentUser
-                                        val userDocRef = firestore.collection("user").document("${user?.uid}")
-                                        val userData = hashMapOf(
-                                            "email" to email,
-                                            "password" to password
-                                        )
-                                        userDocRef.set(userData)
-                                            .addOnSuccessListener {
-                                                Toast.makeText(this, "Firebase에 사용자 정보를 저장하는 데 성공했습니다.", Toast.LENGTH_SHORT).show()
-                                                startActivity(Intent(this, MainActivity::class.java))
-                                                finish()
-                                            }
-                                            .addOnFailureListener { exception ->
-                                                Toast.makeText(this, "Firestore에 사용자 정보를 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                                            }
-
-                                    }else {
-                                        // 회원가입 실패
-                                        val errorMessage = task.exception?.message ?: "회원가입 실패"
-                                        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-                                    }
-
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // 회원가입 성공
+                        val user = task.result?.user
+                        user?.let {
+                            val userDocRef = firestore.collection("user")
+                                .document(user.uid)
+                            val userData = hashMapOf(
+                                "email" to email,
+                                "password" to password)
+                            userDocRef.set(userData)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Firebase에 사용자 정보를 저장하는 데 성공했습니다.", Toast.LENGTH_SHORT).show()
+                                    G.userAccount= User(email,password)
+                                    startActivity(Intent(this, LoginActivity::class.java))
+                                    finish()
                                 }
+                                .addOnFailureListener { exception ->
+                                    Toast.makeText(this, "Firestore에 사용자 정보를 저장하는 데 실패했습니다.", Toast.LENGTH_SHORT).show() }
+                        }
+                    } else {
+                        // 회원가입 실패
+                        val errorMessage = task.exception?.message ?: "회원가입 실패"
+                        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                    }
+
+                }
 
 
         }
     }
+
 }
+
 

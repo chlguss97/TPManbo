@@ -4,9 +4,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="whiteblue">#D0E8FD</color>
     <color name="blue">#bde0fe</color>
-    <color name="deepblue">#a2d2ff</color>
+    <color name="deepblue">#ACD5FC</color>
+    <color name="deepdeepblue">#a2d2ff</color>
     <color name="whitepink">#FDEFF8</color>
     <color name="pink">#ffc8dd</color>
-    <color name="deeppink">#ffafcc</color>
+    <color name="deeppink">#FDB7D2</color>
+    <color name="deepdeeppink">#FB9CBF</color>
+
+
     <color name="pp">#e4c1f9</color>
 </resources>

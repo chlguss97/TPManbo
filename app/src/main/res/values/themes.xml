@@ -4,9 +4,9 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
-        <item name="android:statusBarColor" tools:targetApi="l">@color/blue</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/whiteblue</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="colorAccent">@color/deepblue</item>
+        <item name="colorAccent">@color/deeppink</item>
 
     </style>
 

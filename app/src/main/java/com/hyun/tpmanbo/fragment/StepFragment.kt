@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -22,6 +23,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.hyun.tpmanbo.G
+
 import com.hyun.tpmanbo.activities.SettingActivity
 import com.hyun.tpmanbo.databinding.FragmentStepBinding
 import java.text.SimpleDateFormat
@@ -42,6 +44,16 @@ class StepFragment : Fragment(), SensorEventListener {
     private val month = calender.get(Calendar.MONTH)
     private val day = calender.get(Calendar.DAY_OF_MONTH)
     private var stepCount2: Int = 0
+    private lateinit var sharedPreferences: SharedPreferences
+
+    private fun saveDateToSharedPreferences(year: Int, month: Int, day: Int) {
+        val editor = sharedPreferences.edit()
+        editor.putInt("year", year)
+        editor.putInt("month", month)
+        editor.putInt("day", day)
+        editor.apply()
+    }
+
 
 
 
@@ -77,6 +89,9 @@ class StepFragment : Fragment(), SensorEventListener {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
+        // SharedPreferences 초기화
+        sharedPreferences = requireContext().getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+
         return binding.root
 
 
@@ -92,34 +107,54 @@ class StepFragment : Fragment(), SensorEventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val user = auth.currentUser
-        user?.let {
-            val docRef = firestore.collection("user").document(user.uid)
-            docRef.get().addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val year = document.getLong("year")
-                    val month = document.getLong("month")
-                    val day = document.getLong("day")
 
-                    if (year != null && month != null && day != null) {
-                        val currentDate = Calendar.getInstance()
-                        val selectedDate = Calendar.getInstance()
-                        selectedDate.set(year.toInt(), month.toInt() - 1, day.toInt())
 
-                        val diffInMillis = currentDate.timeInMillis - selectedDate.timeInMillis
+        // SharedPreferences에서 데이터 가져오기
+        val storedYear = sharedPreferences.getInt("year", -1)
+        val storedMonth = sharedPreferences.getInt("month", -1)
+        val storedDay = sharedPreferences.getInt("day", -1)
+        val storeNickname = sharedPreferences.getString("nickname","No name")
 
-                        binding.tv.text = "함께보낸 시간들 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 ♥"
+        if (storedYear != -1 && storedMonth != -1 && storedDay != -1) {
+            val currentDate = Calendar.getInstance()
+            val selectedDate = Calendar.getInstance()
+            selectedDate.set(storedYear, storedMonth, storedDay)
+
+            val diffInMillis = currentDate.timeInMillis - selectedDate.timeInMillis
+            binding.tvNickname.setText(storeNickname)
+            binding.tv.text = "서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
+        } else {
+            // SharedPreferences에 저장된 데이터가 없을 때만 Firestore에서 데이터 가져오기
+            val user = auth.currentUser
+            user?.let {
+                val docRef = firestore.collection("user").document(user.uid)
+                docRef.get().addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        val year = document.getLong("year")
+                        val month = document.getLong("month")
+                        val day = document.getLong("day")
+
+
+                        if (year != null && month != null && day != null) {
+                            val currentDate = Calendar.getInstance()
+                            val selectedDate = Calendar.getInstance()
+                            selectedDate.set(year.toInt(), month.toInt() - 1, day.toInt())
+
+                            val diffInMillis = currentDate.timeInMillis - selectedDate.timeInMillis
+
+                            binding.tv.text = "서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
+                        } else {
+                            Log.d(TAG, "Year, month, or day is null")
+                        }
                     } else {
-                        Log.d(TAG, "Year, month, or day is null")
+                        Log.d(TAG, "No such document")
                     }
-                } else {
-                    Log.d(TAG, "No such document")
+                }.addOnFailureListener { exception ->
+                    Log.d(TAG, "get failed with ", exception)
                 }
-            }.addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
             }
-
         }
+
 
 
 
@@ -140,7 +175,10 @@ class StepFragment : Fragment(), SensorEventListener {
                     val a = c1.timeInMillis
                     val b = c2.timeInMillis
 
-                    binding.tv.text = "함께보낸 시간들 ${(b - a) / (60 * 60 * 1000 * 24)} 일 ♥"
+                    binding.tv.text = "서로만보기와 함께한 지 ${(b - a) / (60 * 60 * 1000 * 24)} 일 "
+
+                    // SharedPreferences에 선택된 날짜 저장
+                    saveDateToSharedPreferences(selectedYear, selectedMonth, selectedDay)
 
                     // Firestore에 선택된 날짜 업데이트
                     val user = auth.currentUser
@@ -148,20 +186,24 @@ class StepFragment : Fragment(), SensorEventListener {
                         val docRef = firestore.collection("user").document(user.uid)
                         val data = hashMapOf(
                             "year" to selectedYear,
-                            "month" to selectedMonth+1,
+                            "month" to selectedMonth + 1,
                             "day" to selectedDay
                         )
                         docRef.update(data as Map<String, Any>).addOnSuccessListener {
                             Toast.makeText(
                                 requireContext(),
-                                "날짜 변경성공",
+                                "날짜 변경 성공",
                                 Toast.LENGTH_SHORT
-                            ).show() }
-
+                            ).show()
+                        }
                     }
                 }
             }, year, month, day).show()
+
+
+
         }
+
 
 
         binding.ivSet.setOnClickListener {
@@ -178,8 +220,8 @@ class StepFragment : Fragment(), SensorEventListener {
                 activity?.runOnUiThread {
                     //Toast.makeText(requireContext(), "$stepCount", Toast.LENGTH_SHORT).show()
                     G.stepcount = stepCount.toString()
-                    binding.tvBalloonCount.text = " ${G.stepcount} 걸음 수 "
-                    binding.tvCount.text= " ${stepCount+stepCount2} 걸음 수 "
+//                    binding.tvBalloonCount.text = " ${G.stepcount} 걸음 수 "
+                    binding.tvCount.text= "총 ${stepCount} 걸음 수 "
                 }
                 saveStepCount(stepCount)
             } else {

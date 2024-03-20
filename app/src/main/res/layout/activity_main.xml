@@ -30,11 +30,11 @@
             app:backgroundTint="@color/blue"
             app:menu="@menu/menu_bnv"
             style="@style/Widget.MaterialComponents.BottomNavigationView"
-            app:itemIconTint="@color/deeppink"
-            app:itemTextColor="@color/deeppink"
+            app:itemIconTint="@color/bnv_color"
+            app:itemTextColor="@color/bnv_color"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
-            app:itemRippleColor="@color/deepblue"/>
+            app:itemRippleColor="@color/deepblue" />
 
 
         
