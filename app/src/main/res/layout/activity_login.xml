@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:text="아이디로 로그인"
             android:textSize="24sp"
-            android:textColor="#62AAEF"
+            android:textColor="@color/deepdeepblue"
             android:fontFamily="@font/font_mitme"
             />
 
