@@ -8,5 +8,7 @@ class G {
         var userAccount : User? = null
         var diffInMillis : Long? = null
         var nickname : String? = null
+
+
     }
 }

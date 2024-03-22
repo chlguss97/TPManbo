@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity"
     android:background="@drawable/bg_bg"
+    android:orientation="vertical"
+    android:weightSum="10"
     android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/iv_title"
-        android:layout_width="276dp"
-        android:layout_height="276dp"
-        android:src="@drawable/logo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
 
-    <ImageView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@drawable/login_logo"
-        android:layout_alignParentEnd="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2">
+
+        <ImageView
+            android:id="@+id/iv_title"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:src="@drawable/logo"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"/>
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/login_logo"
+            android:layout_alignParentEnd="true"/>
 
 
+
+    </RelativeLayout>
     <TextView
         android:id="@+id/tv_go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="서로만보기를 둘러보세요. >"
         android:fontFamily="@font/font_mitme"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/tv_login"
+        android:layout_gravity="center"
         android:background="@drawable/bg_tv_go"
-        android:layout_marginBottom="32dp"
         android:textSize="16dp"
         android:textColor="#A3A4A5"
         android:paddingTop="8dp"
@@ -40,17 +48,23 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"/>
 
+
+
+
+
+
+
     <TextView
         android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="간편하게 로그인하기 "
-        android:layout_below="@id/iv_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
         android:textSize="24sp"
         android:fontFamily="@font/font_mitme"
         android:textColor="#A3A4A5"
+        android:layout_weight="1"
         />
 
     <LinearLayout
@@ -59,7 +73,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/tv_login"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_weight="1">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -94,7 +109,7 @@
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_marginTop="40dp"
-        android:layout_below="@id/layout_btns_login">
+        android:layout_weight="1">
 
         <TextView
             android:layout_width="wrap_content"
@@ -118,7 +133,7 @@
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_marginTop="32dp"
-        android:layout_below="@id/layout_email_login">
+        android:layout_weight="1">
 
         <TextView
             android:layout_width="wrap_content"
@@ -137,4 +152,4 @@
 
 
 
-</RelativeLayout>
+</LinearLayout>

@@ -24,5 +24,9 @@ class IntroActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         },10)
+
+
+
+
     }
 }
