@@ -1,6 +1,7 @@
 package com.hyun.tpmanbo.activities
 
 import android.content.res.ColorStateList
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -14,6 +15,8 @@ import com.hyun.tpmanbo.fragment.StepFragment
 
 class MainActivity : AppCompatActivity() {
 
+
+    var myLocation: Location?= null
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
