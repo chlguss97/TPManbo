@@ -10,7 +10,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hyun.tpmanbo.G
 import com.hyun.tpmanbo.R
-import com.hyun.tpmanbo.User
+import com.hyun.tpmanbo.data.User
 import com.hyun.tpmanbo.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
