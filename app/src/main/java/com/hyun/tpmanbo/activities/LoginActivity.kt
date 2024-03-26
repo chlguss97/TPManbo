@@ -7,8 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
-import com.google.firebase.auth.FirebaseAuth
-import com.hyun.tpmanbo.R
+import android.widget.Toast
 import com.hyun.tpmanbo.databinding.ActivityLoginBinding
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -26,7 +25,9 @@ class LoginActivity : AppCompatActivity() {
         binding.layoutSignup.setOnClickListener { startActivity(Intent(this,SignupActivity::class.java)) }
         binding.layoutEmailLogin.setOnClickListener { startActivity(Intent(this, LoginEmailActivity::class.java)) }
 
-
+        binding.civGoogle.setOnClickListener { Toast.makeText(this, "구글로그인", Toast.LENGTH_SHORT).show() }
+        binding.civKakao.setOnClickListener { Toast.makeText(this, "카카오로그인", Toast.LENGTH_SHORT).show() }
+        binding.civNaver.setOnClickListener { Toast.makeText(this, "네이버로그인", Toast.LENGTH_SHORT).show() }
 
         getHashKey()
     }

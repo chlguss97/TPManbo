@@ -1,14 +1,12 @@
 package com.hyun.tpmanbo.activities
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.hyun.tpmanbo.databinding.ActivityNicknameBinding
-import com.hyun.tpmanbo.activities.MainActivity
+
 
 
 class NicknameActivity : AppCompatActivity() {
@@ -25,6 +23,7 @@ class NicknameActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
+        binding.toolbar.setOnClickListener { finish() }
 
 
         binding.btn.setOnClickListener {
@@ -39,6 +38,9 @@ class NicknameActivity : AppCompatActivity() {
                 // Firebase Firestore 닉네임을 저장합니다.
                 val docRef = firestore.collection("user").document(user.uid)
                 docRef.update(data as Map<String, Any>).addOnSuccessListener {
+                    Toast.makeText(this, "닉네임이 저장되었습니다.", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
                 }.addOnFailureListener { exception ->
                     Toast.makeText(this, "Firebase에 닉네임을 저장하는 데 실패하였습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -49,9 +51,6 @@ class NicknameActivity : AppCompatActivity() {
 
 
 
-    private fun navigateToMainActivity() {
-        Toast.makeText(this, "닉네임이 저장되었습니다.", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
+
+
     }
-}

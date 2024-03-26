@@ -6,7 +6,7 @@
     <item android:id="@+id/menu_bnv_calender" android:title="랭킹" android:icon="@drawable/baseline_bar_chart_24"/>
     <item android:id="@+id/empty" android:title="" android:enabled="false"/>
     <item android:id="@+id/menu_bnv_map" android:title="지도" android:icon="@drawable/baseline_location_pin_24"/>
-    <item android:id="@+id/menu_bnv_info" android:title="발자국샵" android:icon="@drawable/baseline_local_grocery_store_24"/>
+    <item android:id="@+id/menu_bnv_info" android:title="게시판" android:icon="@drawable/baseline_format_list_bulleted_24"/>
 
 
 </menu>

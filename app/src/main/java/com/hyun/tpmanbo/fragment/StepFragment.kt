@@ -5,7 +5,6 @@ import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -57,7 +56,7 @@ class StepFragment : Fragment(), SensorEventListener {
     ): View? {
         binding = FragmentStepBinding.inflate(inflater, container, false)
 
-
+        binding.ivCalendar.setOnClickListener { Toast.makeText(requireContext(), "걸음 수 기록", Toast.LENGTH_SHORT).show() }
 
         // SensorManager와 Step Counter 센서를 초기화
         sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -84,6 +83,10 @@ class StepFragment : Fragment(), SensorEventListener {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
+        binding.tvNickname.text=G.nickname
+        binding.tv.text=G.date
+
+
         return binding.root
 
 
@@ -99,9 +102,7 @@ class StepFragment : Fragment(), SensorEventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tv.text = ""
-        binding.tvNickname.text = ""
-        binding.tvCount.text=""
+
             val user = auth.currentUser
             user?.let {
                 val docRef = firestore.collection("user").document(user.uid)
@@ -113,9 +114,11 @@ class StepFragment : Fragment(), SensorEventListener {
                         val nickname= document.getString("nickname")
 
                             binding.tvNickname.text = nickname
+                            G.nickname= nickname.toString()
 
 
-                        if (year != null && month != null && day != null) {
+
+                        if (year != null && month != null && day != null ) {
                             val currentDate = Calendar.getInstance()
                             val selectedDate = Calendar.getInstance()
                             selectedDate.set(year.toInt(), month.toInt() - 1, day.toInt())
@@ -123,6 +126,7 @@ class StepFragment : Fragment(), SensorEventListener {
                             val diffInMillis = currentDate.timeInMillis - selectedDate.timeInMillis
 
                             binding.tv.text = "서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
+                            G.date="서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
 
                         } else {
                             Log.d(TAG, "Year, month, or day is null")

@@ -50,7 +50,7 @@
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_weight="1.2"
-        android:paddingBottom="16dp"
+
         android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -71,7 +71,6 @@
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_weight="1.2"
-        android:paddingBottom="16dp"
         android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -91,7 +90,6 @@
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_weight="1.2"
-        android:paddingBottom="16dp"
         android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.hyun.tpmanbo.G
 import com.hyun.tpmanbo.R
 import com.hyun.tpmanbo.data.User
@@ -39,14 +40,15 @@ class UserAdapter(private val context: Context, private var userList: List<User>
         holder.binding.tvDistance.text= currentUser.stepCount.toString()
         holder.binding.tvSoonwi.text= "${position+1}위"
 
-        // 닉네임이 현재 사용자의 닉네임과 일치하면 배경색을 변경
-        if (currentUser.uid == G.uid) {
-            holder.binding.layoutCardview.setCardBackgroundColor(ContextCompat.getColor(context, R.color.blue))
-        } else {
-            holder.binding.layoutCardview.setCardBackgroundColor(ContextCompat.getColor(context, R.color.whitepink))
-        }
 
-        Log.d("current","${G.uid},${currentUser.uid}")
+        // 닉네임이 현재 사용자의 닉네임과 일치하면 배경색을 변경
+       if (currentUser.uid == G.uid) {
+            holder.binding.layoutCardview.setCardBackgroundColor(ContextCompat.getColor(context, R.color.blue))
+       } else {
+           holder.binding.layoutCardview.setCardBackgroundColor(ContextCompat.getColor(context, R.color.whitepink))
+       }
+
+
 
     }
 }

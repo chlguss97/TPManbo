@@ -8,10 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseApp
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.hyun.tpmanbo.G
 import com.hyun.tpmanbo.data.User
@@ -49,17 +45,21 @@ class RankFragment : Fragment() {
                     val uid = document.id
                     val nickname = document.getString("nickname") ?: ""
                     val stepCount = document.getLong("stepCount")?.toInt() ?: 0
-                    G.uid= uid
-                    val user = User(uid, nickname, stepCount = stepCount)
+                    val user = User(uid, nickname,stepCount)
                     userList.add(user)
                     Log.d("FirestoreData", "UID: $uid, Nickname: $nickname, Step Count: $stepCount")
                 }
                 binding.recyclerView.adapter = UserAdapter(requireContext(), userList)
+
+
             }
             .addOnFailureListener { exception ->
                 Log.d("FirestoreData", "Error getting documents: ", exception)
                 Toast.makeText(requireContext(), "데이터 가져오기 오류", Toast.LENGTH_SHORT).show()
             }
+
+
+
     }
 
 }

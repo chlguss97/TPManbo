@@ -7,7 +7,7 @@ import android.os.Looper
 import com.bumptech.glide.Glide
 import com.hyun.tpmanbo.R
 import com.hyun.tpmanbo.databinding.ActivityIntroBinding
-import java.util.logging.Handler
+
 
 
 class IntroActivity : AppCompatActivity() {

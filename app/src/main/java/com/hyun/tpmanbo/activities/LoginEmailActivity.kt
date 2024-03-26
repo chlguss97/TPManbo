@@ -5,10 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
+
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import com.hyun.tpmanbo.R
+
 import com.hyun.tpmanbo.databinding.ActivityLoginEmailBinding
 
 
@@ -25,8 +24,8 @@ class LoginEmailActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         binding.btnSignin.setOnClickListener {
-            val email = binding.etId.text.toString() // Firebase에 저장된 이메일 주소
-            val password = binding.etPassword.text.toString()
+            val email = binding.etId.text.toString().trim() // Firebase에 저장된 이메일 주소
+            val password = binding.etPassword.text.toString().trim()
 
             if(email != "" && password != "" ){
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->

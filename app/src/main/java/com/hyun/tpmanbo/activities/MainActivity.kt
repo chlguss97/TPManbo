@@ -19,8 +19,8 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.hyun.tpmanbo.R
 import com.hyun.tpmanbo.databinding.ActivityMainBinding
+import com.hyun.tpmanbo.fragment.BoardFragment
 import com.hyun.tpmanbo.fragment.RankFragment
-import com.hyun.tpmanbo.fragment.InfoFragment
 import com.hyun.tpmanbo.fragment.MapFragment
 import com.hyun.tpmanbo.fragment.StepFragment
 
@@ -38,7 +38,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.fab.setOnClickListener { Toast.makeText(this, "refresh", Toast.LENGTH_SHORT).show() }
+        binding.fab.setOnClickListener { }
+
+
+
+
         supportFragmentManager.beginTransaction().add(R.id.container_fragment, StepFragment()).commit()
 
         binding.bnv.setOnItemSelectedListener {
@@ -46,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.menu_bnv_step -> supportFragmentManager.beginTransaction().replace(R.id.container_fragment, StepFragment()).commit()
                 R.id.menu_bnv_calender -> supportFragmentManager.beginTransaction().replace(R.id.container_fragment, RankFragment()).commit()
                 R.id.menu_bnv_map -> supportFragmentManager.beginTransaction().replace(R.id.container_fragment, MapFragment()).commit()
-                R.id.menu_bnv_info -> supportFragmentManager.beginTransaction().replace(R.id.container_fragment, InfoFragment()).commit()
+                R.id.menu_bnv_info -> supportFragmentManager.beginTransaction().replace(R.id.container_fragment, BoardFragment()).commit()
             }
 
             true
@@ -63,6 +67,11 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+
+
+
+
 
     val permissionResultLauncher: ActivityResultLauncher<String> = registerForActivityResult(
         ActivityResultContracts.RequestPermission()){

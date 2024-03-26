@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hyun.tpmanbo.G
-import com.hyun.tpmanbo.R
 import com.hyun.tpmanbo.data.User
 import com.hyun.tpmanbo.databinding.ActivitySignupBinding
 
@@ -29,9 +27,9 @@ class SignupActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         binding.btnSignup.setOnClickListener {
-            val email = binding.etId.text.toString()
-            val password = binding.etPassword.text.toString()
-            val password2 = binding.etPassword2.text.toString()
+            val email = binding.etId.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+            val password2 = binding.etPassword2.text.toString().trim()
 
             if (password != password2){
                 Toast.makeText(this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show()
