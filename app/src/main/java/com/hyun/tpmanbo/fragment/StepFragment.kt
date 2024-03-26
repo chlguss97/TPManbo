@@ -44,15 +44,8 @@ class StepFragment : Fragment(), SensorEventListener {
     private val month = calender.get(Calendar.MONTH)
     private val day = calender.get(Calendar.DAY_OF_MONTH)
     private var stepCount2: Int = 0
-    private lateinit var sharedPreferences: SharedPreferences
 
-    private fun saveDateToSharedPreferences(year: Int, month: Int, day: Int) {
-        val editor = sharedPreferences.edit()
-        editor.putInt("year", year)
-        editor.putInt("month", month)
-        editor.putInt("day", day)
-        editor.apply()
-    }
+
 
 
 
@@ -63,6 +56,8 @@ class StepFragment : Fragment(), SensorEventListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentStepBinding.inflate(inflater, container, false)
+
+
 
         // SensorManager와 Step Counter 센서를 초기화
         sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -89,9 +84,6 @@ class StepFragment : Fragment(), SensorEventListener {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-        // SharedPreferences 초기화
-        sharedPreferences = requireContext().getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
-
         return binding.root
 
 
@@ -107,24 +99,9 @@ class StepFragment : Fragment(), SensorEventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-        // SharedPreferences에서 데이터 가져오기
-        val storedYear = sharedPreferences.getInt("year", -1)
-        val storedMonth = sharedPreferences.getInt("month", -1)
-        val storedDay = sharedPreferences.getInt("day", -1)
-        val storeNickname = sharedPreferences.getString("nickname","No name")
-
-        if (storedYear != -1 && storedMonth != -1 && storedDay != -1) {
-            val currentDate = Calendar.getInstance()
-            val selectedDate = Calendar.getInstance()
-            selectedDate.set(storedYear, storedMonth, storedDay)
-
-            val diffInMillis = currentDate.timeInMillis - selectedDate.timeInMillis
-            binding.tvNickname.setText(storeNickname)
-            binding.tv.text = "서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
-        } else {
-            // SharedPreferences에 저장된 데이터가 없을 때만 Firestore에서 데이터 가져오기
+        binding.tv.text = ""
+        binding.tvNickname.text = ""
+        binding.tvCount.text=""
             val user = auth.currentUser
             user?.let {
                 val docRef = firestore.collection("user").document(user.uid)
@@ -133,6 +110,9 @@ class StepFragment : Fragment(), SensorEventListener {
                         val year = document.getLong("year")
                         val month = document.getLong("month")
                         val day = document.getLong("day")
+                        val nickname= document.getString("nickname")
+
+                            binding.tvNickname.text = nickname
 
 
                         if (year != null && month != null && day != null) {
@@ -143,17 +123,19 @@ class StepFragment : Fragment(), SensorEventListener {
                             val diffInMillis = currentDate.timeInMillis - selectedDate.timeInMillis
 
                             binding.tv.text = "서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
+
                         } else {
                             Log.d(TAG, "Year, month, or day is null")
                         }
                     } else {
-                        Log.d(TAG, "No such document")
+                        binding.tvNickname.text = "No name"
+
                     }
                 }.addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
                 }
             }
-        }
+
 
 
 
@@ -177,8 +159,6 @@ class StepFragment : Fragment(), SensorEventListener {
 
                     binding.tv.text = "서로만보기와 함께한 지 ${(b - a) / (60 * 60 * 1000 * 24)} 일 "
 
-                    // SharedPreferences에 선택된 날짜 저장
-                    saveDateToSharedPreferences(selectedYear, selectedMonth, selectedDay)
 
                     // Firestore에 선택된 날짜 업데이트
                     val user = auth.currentUser
