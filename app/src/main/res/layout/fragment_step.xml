@@ -161,7 +161,7 @@
             android:id="@+id/tv_nickname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="닉네임 없음"
+            android:text=""
             android:fontFamily="@font/font_mitme"
             android:textSize="28sp"
             android:layout_weight="1"

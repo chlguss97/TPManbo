@@ -1,5 +1,6 @@
 package com.hyun.tpmanbo.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,15 @@ import com.hyun.tpmanbo.data.User
 import com.hyun.tpmanbo.databinding.RecyclerItemListFragmentBinding
 
 class UserAdapter(private val context: Context, private var userList: List<User>) : RecyclerView.Adapter<UserAdapter.VH>() {
+
+    private var currentUserNickname: String = ""
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setCurrentUserNickname(nickname: String) {
+        currentUserNickname = nickname
+        notifyDataSetChanged() // 사용자 닉네임 변경 시 RecyclerView 갱신
+    }
+
 
     init {
         // userList를 걸음 수(stepCount)에 따라 내림차순으로 정렬
@@ -41,14 +51,14 @@ class UserAdapter(private val context: Context, private var userList: List<User>
         holder.binding.tvSoonwi.text= "${position+1}위"
 
 
-        // 닉네임이 현재 사용자의 닉네임과 일치하면 배경색을 변경
-       if (currentUser.uid == G.uid) {
+        // 본인의 닉네임과 현재 사용자의 닉네임이 일치하는지 확인하고 배경색을 설정
+        if (currentUser.nickname == currentUserNickname) {
             holder.binding.layoutCardview.setCardBackgroundColor(ContextCompat.getColor(context, R.color.blue))
-       } else {
-           holder.binding.layoutCardview.setCardBackgroundColor(ContextCompat.getColor(context, R.color.whitepink))
-       }
+        } else {
+            holder.binding.layoutCardview.setCardBackgroundColor(ContextCompat.getColor(context, R.color.whitewhitepink))
+        }
+    }
 
 
 
     }
-}

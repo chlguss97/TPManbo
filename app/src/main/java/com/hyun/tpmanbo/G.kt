@@ -1,5 +1,7 @@
 package com.hyun.tpmanbo
 
+import android.content.Context
+import android.content.SharedPreferences
 import com.hyun.tpmanbo.data.User
 
 class G {
@@ -9,9 +11,10 @@ class G {
         var email : String = ""
         var password : String = ""
         var profile : String = ""
-        var date : String= ""
+        var date : String= "시작한 날을 알려주세요."
         var nickname :String=""
         var uid :String=""
+
 
 
 

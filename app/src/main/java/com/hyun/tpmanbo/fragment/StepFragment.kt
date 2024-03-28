@@ -1,10 +1,12 @@
 package com.hyun.tpmanbo.fragment
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -43,6 +45,8 @@ class StepFragment : Fragment(), SensorEventListener {
     private val month = calender.get(Calendar.MONTH)
     private val day = calender.get(Calendar.DAY_OF_MONTH)
     private var stepCount2: Int = 0
+    private lateinit var sharedPreferences: SharedPreferences
+
 
 
 
@@ -83,8 +87,6 @@ class StepFragment : Fragment(), SensorEventListener {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-        binding.tvNickname.text=G.nickname
-        binding.tv.text=G.date
 
 
         return binding.root
@@ -99,8 +101,11 @@ class StepFragment : Fragment(), SensorEventListener {
         sensorManager.unregisterListener(this)
     }
 
+    @SuppressLint("CommitPrefEdits")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
 
             val user = auth.currentUser
@@ -112,10 +117,12 @@ class StepFragment : Fragment(), SensorEventListener {
                         val month = document.getLong("month")
                         val day = document.getLong("day")
                         val nickname= document.getString("nickname")
+                        binding.tvNickname.text = nickname
+                        G.nickname=nickname.toString()
 
-                            binding.tvNickname.text = nickname
-                            G.nickname= nickname.toString()
+                        sharedPreferences= activity?.getSharedPreferences(getString((user.uid).toInt()), Context.MODE_PRIVATE)!!
 
+                        sharedPreferences.edit().putString(G.nickname,G.nickname).apply()
 
 
                         if (year != null && month != null && day != null ) {
@@ -125,15 +132,19 @@ class StepFragment : Fragment(), SensorEventListener {
 
                             val diffInMillis = currentDate.timeInMillis - selectedDate.timeInMillis
 
-                            binding.tv.text = "서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
-                            G.date="서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
+                            val result = "서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
+
+                            sharedPreferences.apply {
+                                this.edit().putString("date",result).apply()
+
+                            }
+                            binding.tv.text=sharedPreferences.getString("date","시작한 날을 정해주세요. ")
+
+
+
 
                         } else {
-                            Log.d(TAG, "Year, month, or day is null")
-                        }
-                    } else {
-                        binding.tvNickname.text = "No name"
-
+                            Log.d(TAG, "Year, month, or day is null") }
                     }
                 }.addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
@@ -203,7 +214,7 @@ class StepFragment : Fragment(), SensorEventListener {
                 //Log.d("stepcount", "$stepCount")
                 activity?.runOnUiThread {
                     //Toast.makeText(requireContext(), "$stepCount", Toast.LENGTH_SHORT).show()
-                    G.stepcount = stepCount.toString()
+
 //                    binding.tvBalloonCount.text = " ${G.stepcount} 걸음 수 "
                     binding.tvCount.text= "총 ${stepCount} 걸음 수 "
                 }

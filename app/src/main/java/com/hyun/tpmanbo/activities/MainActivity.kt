@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     val locationProviderClient: FusedLocationProviderClient by lazy { LocationServices.getFusedLocationProviderClient(this) }
     // kakao search API 응답결과 객체 참조변수
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

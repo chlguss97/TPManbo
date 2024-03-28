@@ -49,15 +49,18 @@ class RankFragment : Fragment() {
                     userList.add(user)
                     Log.d("FirestoreData", "UID: $uid, Nickname: $nickname, Step Count: $stepCount")
                 }
-                binding.recyclerView.adapter = UserAdapter(requireContext(), userList)
+                // 현재 사용자의 닉네임 가져오기
+                val currentUserNickname = G.nickname
 
-
+                binding.recyclerView.adapter = UserAdapter(requireContext(), userList).apply {
+                    // Adapter 내부에서 현재 사용자의 닉네임을 전달하여 ViewHolder에서 배경색을 다르게 설정
+                    setCurrentUserNickname(currentUserNickname)
+                }
             }
             .addOnFailureListener { exception ->
                 Log.d("FirestoreData", "Error getting documents: ", exception)
                 Toast.makeText(requireContext(), "데이터 가져오기 오류", Toast.LENGTH_SHORT).show()
             }
-
 
 
     }
