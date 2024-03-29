@@ -120,9 +120,7 @@ class StepFragment : Fragment(), SensorEventListener {
                         binding.tvNickname.text = nickname
                         G.nickname=nickname.toString()
 
-                        sharedPreferences= activity?.getSharedPreferences(getString((user.uid).toInt()), Context.MODE_PRIVATE)!!
 
-                        sharedPreferences.edit().putString(G.nickname,G.nickname).apply()
 
 
                         if (year != null && month != null && day != null ) {

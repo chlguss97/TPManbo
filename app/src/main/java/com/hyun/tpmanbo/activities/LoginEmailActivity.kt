@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.hyun.tpmanbo.G
 
 import com.hyun.tpmanbo.databinding.ActivityLoginEmailBinding
 
@@ -36,7 +37,7 @@ class LoginEmailActivity : AppCompatActivity() {
                         user?.let {
                             val firestore = FirebaseFirestore.getInstance()
                             val docRef = firestore.collection("user").document(user.uid)
-
+                            G.uid= user.uid
                             docRef.get().addOnSuccessListener { document ->
                                 if (document.exists()) {
                                     val nickname = document.getString("nickname")

@@ -6,10 +6,7 @@ import com.hyun.tpmanbo.data.User
 
 class G {
     companion object{
-        var stepcount : String? = null
         var userAccount : User? = null
-        var email : String = ""
-        var password : String = ""
         var profile : String = ""
         var date : String= "시작한 날을 알려주세요."
         var nickname :String=""
