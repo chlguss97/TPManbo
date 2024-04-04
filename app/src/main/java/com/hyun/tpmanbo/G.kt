@@ -11,6 +11,7 @@ class G {
         var date : String= "시작한 날을 알려주세요."
         var nickname :String=""
         var uid :String=""
+        var stepCount : Int =0
 
 
 

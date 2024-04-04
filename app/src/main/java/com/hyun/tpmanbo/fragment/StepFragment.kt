@@ -45,7 +45,9 @@ class StepFragment : Fragment(), SensorEventListener {
     private val month = calender.get(Calendar.MONTH)
     private val day = calender.get(Calendar.DAY_OF_MONTH)
     private var stepCount2: Int = 0
-    private lateinit var sharedPreferences: SharedPreferences
+    private var lastDisplayedDate: String? = null
+
+
 
 
 
@@ -58,7 +60,16 @@ class StepFragment : Fragment(), SensorEventListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+
+
+
         binding = FragmentStepBinding.inflate(inflater, container, false)
+
+        binding.tvNickname.text=G.nickname
+
+        binding.tv.text=G.date
 
         binding.ivCalendar.setOnClickListener { Toast.makeText(requireContext(), "걸음 수 기록", Toast.LENGTH_SHORT).show() }
 
@@ -106,24 +117,25 @@ class StepFragment : Fragment(), SensorEventListener {
         super.onViewCreated(view, savedInstanceState)
 
 
+        val user = auth.currentUser
+        val docRef = firestore.collection("user").document(user!!.uid)
 
+        val sharedPreferences = requireContext().getSharedPreferences(G.uid, Context.MODE_PRIVATE)
 
-            val user = auth.currentUser
+        // 서로만보기와 함께한 기간을 SharedPreferences에서 가져오고 없을 경우에만 서버에서 가져옴
+        val sharedDate = sharedPreferences.getString("sharedDate", null)
+
+        // 서로만보기와 함께한 기간을 SharedPreferences에서 가져오고 없을 경우에만 서버에서 가져옴
+        if (sharedDate != null) {
+            binding.tv.text = sharedDate
+        } else {
             user?.let {
-                val docRef = firestore.collection("user").document(user.uid)
                 docRef.get().addOnSuccessListener { document ->
                     if (document.exists()) {
                         val year = document.getLong("year")
                         val month = document.getLong("month")
                         val day = document.getLong("day")
-                        val nickname= document.getString("nickname")
-                        binding.tvNickname.text = nickname
-                        G.nickname=nickname.toString()
-
-
-
-
-                        if (year != null && month != null && day != null ) {
+                        if (year != null && month != null && day != null) {
                             val currentDate = Calendar.getInstance()
                             val selectedDate = Calendar.getInstance()
                             selectedDate.set(year.toInt(), month.toInt() - 1, day.toInt())
@@ -131,21 +143,31 @@ class StepFragment : Fragment(), SensorEventListener {
                             val diffInMillis = currentDate.timeInMillis - selectedDate.timeInMillis
 
                             val result = "서로만보기와 함께한 지 ${diffInMillis / (60 * 60 * 1000 * 24)} 일 "
+                            binding.tv.text = result
 
-                            sharedPreferences.apply {
-                                this.edit().putString("date",result).apply()
-
-                            }
-                            binding.tv.text=sharedPreferences.getString("date","시작한 날을 정해주세요. ")
-
-
-
-
+                            // SharedPreferences에 값을 저장
+                            sharedPreferences.edit().putString("sharedDate", result).apply()
                         } else {
-                            Log.d(TAG, "Year, month, or day is null") }
+                            Log.d(TAG, "Year, month, or day is null")
+                        }
+
+
                     }
                 }.addOnFailureListener { exception ->
                     Log.d(TAG, "get failed with ", exception)
+                }
+            }
+
+            // 닉네임도 서버에서 가져와 설정
+            user?.let {
+                docRef.get().addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        val nickname= document.getString("nickname")
+                        binding.tvNickname.text=nickname
+                        G.nickname=nickname.toString()
+                    }
+
+                    }
                 }
             }
 
@@ -170,7 +192,11 @@ class StepFragment : Fragment(), SensorEventListener {
                     val a = c1.timeInMillis
                     val b = c2.timeInMillis
 
-                    binding.tv.text = "서로만보기와 함께한 지 ${(b - a) / (60 * 60 * 1000 * 24)} 일 "
+                    val  result = "서로만보기와 함께한 지 ${(b - a) / (60 * 60 * 1000 * 24)} 일 "
+
+                    binding.tv.text=result
+
+                    sharedPreferences.edit().putString("sharedDate", result).apply()
 
 
                     // Firestore에 선택된 날짜 업데이트
@@ -183,6 +209,7 @@ class StepFragment : Fragment(), SensorEventListener {
                             "day" to selectedDay
                         )
                         docRef.update(data as Map<String, Any>).addOnSuccessListener {
+
                             Toast.makeText(
                                 requireContext(),
                                 "날짜 변경 성공",
@@ -204,17 +231,19 @@ class StepFragment : Fragment(), SensorEventListener {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onSensorChanged(event: SensorEvent?) {
         Log.d("Start listener", "aaa")
         event?.let {
             if (it.sensor?.type == Sensor.TYPE_STEP_COUNTER) {
                 stepCount = it.values[0].toInt()
+                G.stepCount= stepCount
                 //Log.d("stepcount", "$stepCount")
                 activity?.runOnUiThread {
                     //Toast.makeText(requireContext(), "$stepCount", Toast.LENGTH_SHORT).show()
 
 //                    binding.tvBalloonCount.text = " ${G.stepcount} 걸음 수 "
-                    binding.tvCount.text= "총 ${stepCount} 걸음 수 "
+                    binding.tvCount.text= "총 ${G.stepCount} 걸음 수 "
                 }
                 saveStepCount(stepCount)
             } else {
@@ -234,7 +263,8 @@ class StepFragment : Fragment(), SensorEventListener {
         // 현재 날짜와 lastDate가 다르다면 lastDate를 업데이트하고 stepCount를 0으로 초기화
         if (lastDate != null && currentDate != lastDate) {
             lastDate = currentDate
-            this.stepCount = 0 // 걸음 수 초기화
+            this.stepCount = 0
+            G.stepCount= 0// 걸음 수 초기화
         }
 
         val user = auth.currentUser
