@@ -61,21 +61,15 @@ class StepFragment : Fragment(), SensorEventListener {
         savedInstanceState: Bundle?
     ): View? {
 
-
-
-
-
+        // FirebaseAuth 및 FirebaseFirestore 초기화
+        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
         binding = FragmentStepBinding.inflate(inflater, container, false)
-
         binding.tvNickname.text=G.nickname
-
         binding.tv.text=G.date
-
         binding.ivCalendar.setOnClickListener { Toast.makeText(requireContext(), "걸음 수 기록", Toast.LENGTH_SHORT).show() }
-
         // SensorManager와 Step Counter 센서를 초기화
         sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
-
         stepCountSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
 
         // 걸음 수 추적에 필요한 권한이 부여되었는지 확인
@@ -94,15 +88,7 @@ class StepFragment : Fragment(), SensorEventListener {
             sensorManager.registerListener(this, stepCountSensor, SensorManager.SENSOR_DELAY_NORMAL)
         }
 
-        // FirebaseAuth 및 FirebaseFirestore 초기화
-        auth = FirebaseAuth.getInstance()
-        firestore = FirebaseFirestore.getInstance()
-
-
-
         return binding.root
-
-
 
     }
 
