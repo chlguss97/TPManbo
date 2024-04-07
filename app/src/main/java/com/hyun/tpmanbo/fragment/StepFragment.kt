@@ -44,12 +44,6 @@ class StepFragment : Fragment(), SensorEventListener {
     private val year = calender.get(Calendar.YEAR)
     private val month = calender.get(Calendar.MONTH)
     private val day = calender.get(Calendar.DAY_OF_MONTH)
-    private var stepCount2: Int = 0
-    private var lastDisplayedDate: String? = null
-
-
-
-
 
 
 
@@ -71,6 +65,9 @@ class StepFragment : Fragment(), SensorEventListener {
         // SensorManager와 Step Counter 센서를 초기화
         sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         stepCountSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+
+
+
 
         // 걸음 수 추적에 필요한 권한이 부여되었는지 확인
         if (ContextCompat.checkSelfPermission(
@@ -224,6 +221,8 @@ class StepFragment : Fragment(), SensorEventListener {
             if (it.sensor?.type == Sensor.TYPE_STEP_COUNTER) {
                 stepCount = it.values[0].toInt()
                 G.stepCount= stepCount
+                binding.progress.progress= stepCount.toFloat()
+                binding.progress.text="${stepCount} 보"
                 //Log.d("stepcount", "$stepCount")
                 activity?.runOnUiThread {
                     //Toast.makeText(requireContext(), "$stepCount", Toast.LENGTH_SHORT).show()

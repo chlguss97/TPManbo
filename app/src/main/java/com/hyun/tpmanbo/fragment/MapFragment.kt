@@ -60,7 +60,7 @@ class MapFragment : Fragment() {
                 kakaoMap.moveCamera(cameraUpdate)
 
                 // 내 위치 마커 추가하기
-                val labelOption: LabelOptions = LabelOptions.from(myPos).setStyles(R.drawable.ic_mypin)
+                val labelOption: LabelOptions = LabelOptions.from(myPos).setStyles(R.drawable.locationmark)
                 //라벨이 그려질 레이어 객체 소환
                 val labelLayer: LabelLayer = kakaoMap.labelManager!!.layer!!
                 //라벨 레이어에 추가

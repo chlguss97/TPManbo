@@ -20,6 +20,7 @@ class BoardWriteActivity : AppCompatActivity() {
     val binding by lazy { ActivityBoardWriteBinding.inflate(layoutInflater) }
     val db = FirebaseFirestore.getInstance()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

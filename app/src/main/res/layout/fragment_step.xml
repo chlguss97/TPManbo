@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    android:padding="4dp"
+    android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="32dp">
+        android:orientation="horizontal">
 
 
         <TextView
@@ -54,100 +51,30 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp">
-
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_balloon_count"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-
-<!--            android:fontFamily="@font/font_mitme"-->
-<!--            android:gravity="center"-->
-<!--            android:text=" 1,234 걸음 "-->
-<!--            android:background="@drawable/marpoong"-->
-<!--            android:textSize="24sp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_balloon_count2"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/marpoong2"-->
-<!--            android:fontFamily="@font/font_mitme"-->
-<!--            android:gravity="center"-->
-<!--            android:text=" 연결 대기중.. "-->
-<!--            android:textSize="24sp"-->
-<!--            android:layout_weight="1"/>-->
 
 
 
-
-    </LinearLayout>
-
-
-
-
-
-
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-
-        <LinearLayout
-            android:id="@+id/layout_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_profile"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:src="@drawable/profile"
-                android:layout_weight="1" />
-
-
-<!--            <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                android:id="@+id/iv_profile2"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="120dp"-->
-<!--                android:src="@drawable/profle"-->
-<!--                android:layout_weight="1" />-->
-
-
-        </LinearLayout>
-
-<!--        <Button-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:text="연결하기"-->
-<!--            android:textSize="28sp"-->
-<!--            android:fontFamily="@font/font_mitme"-->
-<!--            style="@style/Widget.MaterialComponents.Button"-->
-<!--            android:backgroundTint="@color/pink"/>-->
-
-<!--    </RelativeLayout>-->
-
-
-
-
-
-
-
-
-
-
-
+          <com.owl93.dpb.CircularProgressView
+              android:id="@+id/progress"
+              android:layout_width="150dp"
+              android:layout_height="164dp"
+              app:maxValue="10000"
+              app:strokeWidth="16dp"
+              app:strokeColor="@color/pink"
+              app:progress="20"
+              app:startingAngle="0"
+              app:drawTrack="true"
+              app:trackColor="@color/deepdeepblue"
+              app:trackWidth="16dp"
+              app:gradientStartColor="@color/pink"
+              app:gradientCenterColor="@color/deeppink"
+              app:gradientEndColor="@color/deepdeeppink"
+              app:textEnabled="true"
+              app:textSize="20sp"
+              app:text="1000 걸음수"
+              app:textColor="@color/deepdeeppink"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="32dp"/>
 
 
 
@@ -170,18 +97,6 @@
             />
 
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_nickname2"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="User 2"-->
-<!--            android:fontFamily="@font/font_mitme"-->
-<!--            android:textSize="28sp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:gravity="center"-->
-<!--            />-->
-
 
     </LinearLayout>
 
@@ -194,7 +109,7 @@
         android:fontFamily="@font/font_mitme"
         android:textSize="32sp"
         android:gravity="center"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="12dp"/>
 
     <TextView
         android:id="@+id/tv_count"
