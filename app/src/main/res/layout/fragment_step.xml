@@ -3,30 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="@color/white"
+    android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="32dp">
+        android:orientation="horizontal">
 
 
         <TextView
             android:id="@+id/tv"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="만난날을 알려주세요."
+            android:layout_height="40dp"
+            android:text="시작한 날을 알려주세요."
             android:fontFamily="@font/font_mitme"
             android:background="@drawable/step_box"
             android:gravity="center"
             android:paddingTop="8dp"
             android:paddingBottom="6dp"
-            android:textSize="24sp"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
+            android:textSize="20sp"
             android:layout_weight="8"/>
+
+        <ImageView
+            android:id="@+id/iv_calendar"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_calendar_month_24"
+            android:background="@drawable/step_box"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp" />
 
         <ImageView
             android:id="@+id/iv_set"
@@ -41,78 +51,44 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp">
-
-
-        <TextView
-            android:id="@+id/tv_balloon_count"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/marpoong"
-            android:fontFamily="@font/font_mitme"
-            android:gravity="center"
-            android:text=" 1,234 걸음 "
-            android:textSize="24sp"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/tv_balloon_count2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/marpoong2"
-            android:fontFamily="@font/font_mitme"
-            android:gravity="center"
-            android:text=" 1,234 걸음 "
-            android:textSize="24sp"
-            android:layout_weight="1"/>
 
 
 
-    </LinearLayout>
+          <com.owl93.dpb.CircularProgressView
+              android:id="@+id/progress"
+              android:layout_width="150dp"
+              android:layout_height="164dp"
+              app:maxValue="10000"
+              app:strokeWidth="16dp"
+              app:strokeColor="@color/pink"
+              app:progress="20"
+              app:startingAngle="0"
+              app:drawTrack="true"
+              app:trackColor="@color/deepdeepblue"
+              app:trackWidth="16dp"
+              app:gradientStartColor="@color/pink"
+              app:gradientCenterColor="@color/deeppink"
+              app:gradientEndColor="@color/deepdeeppink"
+              app:textEnabled="true"
+              app:textSize="20sp"
+              app:text="1000 걸음수"
+              app:textColor="@color/deepdeeppink"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="32dp"/>
 
 
 
     <LinearLayout
-        android:id="@+id/layout_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_profile"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:src="@drawable/profle"
-            android:layout_weight="1" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_profile2"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:src="@drawable/profle"
-            android:layout_weight="1" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
 
         <TextView
             android:id="@+id/tv_nickname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="User 1"
+            android:text=""
             android:fontFamily="@font/font_mitme"
             android:textSize="28sp"
             android:layout_weight="1"
@@ -120,36 +96,26 @@
             android:gravity="center"
             />
 
-        <TextView
-            android:id="@+id/tv_nickname2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="User 2"
-            android:fontFamily="@font/font_mitme"
-            android:textSize="28sp"
-            android:layout_weight="1"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            />
 
 
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_count_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="오늘 우리는.."
+        android:text=" 오늘 나는.."
         android:fontFamily="@font/font_mitme"
         android:textSize="32sp"
         android:gravity="center"
-        android:layout_marginTop="48dp"/>
+        android:layout_marginTop="12dp"/>
 
     <TextView
         android:id="@+id/tv_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="총 4,567 걸음"
+        android:text="총 0 걸음"
         android:fontFamily="@font/font_mitme"
         android:textSize="28sp"
         android:paddingTop="4dp"
@@ -157,33 +123,250 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/count_box"
+        android:background="@drawable/count_box2"
         android:gravity="center"/>
 
-    <TextView
-        android:id="@+id/tv_count_point_title"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="누적 발자국"
-        android:fontFamily="@font/font_mitme"
-        android:textSize="32sp"
-        android:gravity="center"
-        android:layout_marginTop="48dp"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_count_point_title"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="누적 발자국"
+            android:fontFamily="@font/font_mitme"
+            android:textSize="32sp"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sharp_barefoot_24"
+            android:layout_toRightOf="@id/tv_count_point_title"
+            android:layout_alignBottom="@id/tv_count_point_title"
+            android:layout_alignTop="@id/tv_count_point_title"/>
+
+
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/tv_count_point"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="x,xxx 발자국"
-        android:fontFamily="@font/font_mitme"
-        android:textSize="28sp"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/count_box2"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/count_box"
+
+        android:fontFamily="@font/font_mitme"
+        android:gravity="center"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:gravity="center"/>
+        android:text="x,xxx 발자국"
+        android:textSize="28sp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="132dp"
+                android:layout_height="100dp"
+                android:padding="8dp"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/white"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/deepblue">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3000 걸음"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/font_mitme"
+                        android:textSize="18sp"/>
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 발자국"
+                        android:backgroundTint="@color/deeppink"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="132dp"
+                android:layout_height="100dp"
+                android:padding="8dp"
+                android:backgroundTint="@color/white"
+                android:layout_marginRight="8dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/deepblue">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5000 걸음"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/font_mitme"
+                        android:textSize="18sp"/>
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 발자국"
+                        android:backgroundTint="@color/deeppink"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="132dp"
+                android:layout_height="100dp"
+                android:padding="8dp"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/white"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/deepblue">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7000 걸음"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/font_mitme"
+                        android:textSize="18sp"/>
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 발자국"
+                        android:backgroundTint="@color/deeppink"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="132dp"
+                android:layout_height="100dp"
+                android:padding="8dp"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/white"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/deepblue">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10000 걸음"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/font_mitme"
+                        android:textSize="18sp"/>
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 발자국"
+                        android:backgroundTint="@color/deeppink"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="132dp"
+                android:layout_height="100dp"
+                android:padding="8dp"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/white"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/deepblue">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15000 걸음"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/font_mitme"
+                        android:textSize="18sp"/>
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 발자국"
+                        android:backgroundTint="@color/deeppink"
+                        android:textSize="12sp"
+                        android:gravity="center"/>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
 
 
 

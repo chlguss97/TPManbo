@@ -29,7 +29,7 @@
         android:id="@+id/tv_email"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="아이디로 사용자 계정 만들기"
+        android:text="이메일로 사용자 계정 만들기"
         android:textColor="@color/blue"
         android:textStyle="bold"
         android:fontFamily="@font/font_mitme"
@@ -44,16 +44,17 @@
         android:id="@+id/input_layout_id"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:hint="아이디"
+        android:hint="이메일"
         app:hintTextColor="@color/deeppink"
         app:boxStrokeColor="@color/blue"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_weight="1.2"
-        android:paddingBottom="16dp"
+
         android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text"/>
@@ -64,16 +65,16 @@
         android:id="@+id/input_layout_password"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:hint="비밀번호"
+        android:hint="비밀번호 (6자리 이상)"
         app:hintTextColor="@color/deeppink"
         app:boxStrokeColor="@color/blue"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_weight="1.2"
-        android:paddingBottom="16dp"
         android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"/>
@@ -83,16 +84,16 @@
         android:id="@+id/input_layout_password2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:hint="비밀번호"
+        android:hint="비밀번호 확인"
         app:hintTextColor="@color/deeppink"
         app:boxStrokeColor="@color/blue"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_weight="1.2"
-        android:paddingBottom="16dp"
         android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"/>

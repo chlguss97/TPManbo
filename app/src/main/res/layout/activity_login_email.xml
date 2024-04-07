@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:text="아이디로 로그인하기"
-        android:textColor="@color/blue"
+        android:textColor="@color/pink"
         android:textStyle="bold"
         android:fontFamily="@font/font_mitme"
         android:textSize="26sp"
@@ -44,15 +44,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:hint="아이디"
-        app:hintTextColor="@color/deeppink"
+        app:hintTextColor="@color/pink"
         app:boxStrokeColor="@color/blue"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_weight="1.2"
-        android:paddingBottom="16dp"
         android:layout_marginBottom="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text"/>
@@ -64,15 +64,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:hint="비밀번호"
-        app:hintTextColor="@color/deeppink"
+        app:hintTextColor="@color/pink"
         app:boxStrokeColor="@color/blue"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
         android:layout_weight="1.2"
-        android:paddingBottom="16dp"
         android:layout_marginBottom="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"/>
@@ -85,7 +85,7 @@
         android:id="@+id/btn_signin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/pink"
         android:text="Sign In"
         android:textAllCaps="false"
         android:layout_marginLeft="64dp"

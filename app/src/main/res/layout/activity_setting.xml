@@ -10,18 +10,37 @@
     android:background="@color/white">
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="@drawable/baseline_arrow_back_24"
         android:layout_marginBottom="20dp"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_profile"
-        android:layout_width="112dp"
-        android:layout_height="112dp"
-        android:src="@drawable/profle"
-        android:layout_gravity="center"
-        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="이미지 변경"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:fontFamily="@font/font_mitme"
+        android:layout_marginBottom="8dp"/>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       >
+
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/civ_profile"
+           android:layout_width="112dp"
+           android:layout_height="112dp"
+           android:src="@drawable/profile"
+           android:layout_centerInParent="true"/>
+
+
+
+   </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -34,14 +53,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
 
         <TextView
             android:id="@+id/tv_nickname"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:background="@drawable/btn_box"
             android:fontFamily="@font/font_mitme"
@@ -54,88 +73,108 @@
             android:textSize="32sp" />
 
         <ImageView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:src="@drawable/baseline_border_color_24"
-            android:layout_centerVertical="true"
+            android:id="@+id/iv_change_nickname"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="8dp"
             android:layout_toRightOf="@id/tv_nickname"
-            android:layout_marginLeft="8dp"/>
-
-
-
-    </RelativeLayout>
-
-
-
-
-
-
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="목표 걸음 수"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:textSize="40sp"
-        android:fontFamily="@font/font_mitme" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+            android:layout_alignBottom="@id/tv_nickname"
+            android:src="@drawable/baseline_border_color_24" />
 
         <TextView
-            android:id="@+id/tv_target_step"
-            android:layout_width="240dp"
+            android:id="@+id/notify"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/btn_box"
             android:fontFamily="@font/font_mitme"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:gravity="center"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:text="1234 걸음 수"
-            android:textSize="32sp" />
-
-        <ImageView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:src="@drawable/baseline_border_color_24"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/tv_target_step"
-            android:layout_marginLeft="8dp"/>
+            android:text="10,000보 알림 On/Off"
+            android:textSize="28sp" />
 
 
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="목표 걸음 수 알림"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:textSize="40sp"
-            android:fontFamily="@font/font_mitme" />
-
-        <com.google.android.material.button.MaterialButtonToggleGroup
+        <Switch
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_nickname"
+            android:layout_centerInParent="true"/>
+
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button"
+            android:backgroundTint="@color/deeppink"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="64dp"
+            android:text="로그아웃"
+            android:textSize="32sp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:fontFamily="@font/font_mitme"/>
+
+
 
 
 
 
     </RelativeLayout>
+
+
+
+
+
+
+
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="상대방과 연결하기"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="40sp"-->
+<!--        android:fontFamily="@font/font_mitme" />-->
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_connect"-->
+<!--            android:layout_width="240dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:backgroundTint="@color/deeppink"-->
+<!--            android:fontFamily="@font/font_mitme"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingLeft="30dp"-->
+<!--            android:paddingTop="4dp"-->
+<!--            android:paddingRight="30dp"-->
+<!--            android:paddingBottom="4dp"-->
+<!--            android:text="연동하기"-->
+<!--            android:textSize="32sp" />-->
+
+
+
+
+<!--    </RelativeLayout>-->
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -34,7 +34,7 @@
         android:id="@+id/civ_profile"
         android:layout_width="112dp"
         android:layout_height="112dp"
-        android:src="@drawable/profle"
+        android:src="@drawable/profile"
         android:layout_gravity="center"
         android:layout_marginBottom="32dp" />
 
@@ -52,7 +52,7 @@
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_layout_id"
+            android:id="@+id/input_layout_nickname"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:hint="닉네임"
@@ -61,103 +61,103 @@
             android:layout_marginLeft="64dp"
             android:layout_marginRight="64dp"
             android:layout_weight="1.6"
-            android:paddingBottom="16dp"
             android:layout_marginBottom="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_nickname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-    <TextView
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:text="목표 걸음 수 입력 "-->
+<!--        android:textColor="@color/pink"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="@font/font_mitme"-->
+<!--        android:textSize="26sp"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_weight="1" />-->
 
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="목표 걸음 수 입력 "
-        android:textColor="@color/pink"
-        android:textStyle="bold"
-        android:fontFamily="@font/font_mitme"
-        android:textSize="26sp"
-        android:padding="8dp"
-        android:gravity="center"
-        android:layout_weight="1" />
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/input_layout_count_target"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:hint="목표 걸음 수 (숫자로만 입력) "-->
+<!--            app:hintTextColor="@color/deeppink"-->
+<!--            app:boxStrokeColor="@color/blue"-->
+<!--            android:layout_marginLeft="64dp"-->
+<!--            android:layout_marginRight="64dp"-->
+<!--            android:layout_weight="1.6"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:layout_marginBottom="20dp">-->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_layout_password"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:hint="목표 걸음 수"
-            app:hintTextColor="@color/deeppink"
-            app:boxStrokeColor="@color/blue"
-            android:layout_marginLeft="64dp"
-            android:layout_marginRight="64dp"
-            android:layout_weight="1.6"
-            android:paddingBottom="16dp"
-            android:layout_marginBottom="20dp">
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/et_count_target"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:inputType="textPassword"/>-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textPassword"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_couple_code"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/font_mitme"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="커플 식별 코드 "
-            android:textColor="@color/pink"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/baseline_info_outline_24"
-            android:layout_toRightOf="@id/tv_couple_code"
-            android:layout_centerVertical="true"/>
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
 
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:orientation="horizontal">-->
 
-    </RelativeLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_couple_code"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:fontFamily="@font/font_mitme"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="8dp"-->
+<!--            android:text="커플 식별 코드 "-->
+<!--            android:textColor="@color/pink"-->
+<!--            android:textSize="26sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:src="@drawable/baseline_info_outline_24"-->
+<!--            android:layout_toRightOf="@id/tv_couple_code"-->
+<!--            android:layout_centerVertical="true"/>-->
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout_couple_code"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:hint="커플 코드"
-        app:hintTextColor="@color/deeppink"
-        app:boxStrokeColor="@color/blue"
-        android:layout_marginLeft="64dp"
-        android:layout_marginRight="64dp"
-        android:layout_weight="1.6"
-        android:paddingBottom="16dp"
-        android:layout_marginBottom="20dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text"/>
+<!--    </RelativeLayout>-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/input_layout_couple_code"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:hint="커플 코드"-->
+<!--        app:hintTextColor="@color/deeppink"-->
+<!--        app:boxStrokeColor="@color/blue"-->
+<!--        android:layout_marginLeft="64dp"-->
+<!--        android:layout_marginRight="64dp"-->
+<!--        android:layout_weight="1.6"-->
+<!--        android:paddingBottom="16dp"-->
+<!--        android:layout_marginBottom="20dp">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:inputType="text"/>-->
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
 
         <Button
-            android:id="@+id/btn_start"
+            android:id="@+id/btn"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:backgroundTint="@color/pink"
@@ -165,7 +165,7 @@
             android:textAllCaps="false"
             android:layout_marginLeft="64dp"
             android:layout_marginRight="64dp"
-            android:layout_marginBottom="28dp"
+            android:layout_marginTop="64dp"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_weight="1.6"/>
 
