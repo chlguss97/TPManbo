@@ -1,6 +1,8 @@
 package com.hyun.tpmanbo.fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +22,11 @@ import com.kakao.vectormap.label.LabelLayer
 import com.kakao.vectormap.label.LabelOptions
 
 
+
 class MapFragment : Fragment() {
 
     private lateinit var binding: FragmentMapBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +42,7 @@ class MapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       val mapview : MapView = binding.mapview
+       val mapview : MapView = binding.mapView
         mapview.start(object : MapLifeCycleCallback() {
             override fun onMapDestroy() {
                 Toast.makeText(requireContext(), "지도를 정상적으로 불러왔습니다", Toast.LENGTH_SHORT).show()

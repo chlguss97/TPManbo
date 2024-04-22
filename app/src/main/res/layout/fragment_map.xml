@@ -1,18 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="4dp">
+    tools:context=".activities.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-   <com.kakao.vectormap.MapView
-       android:id="@+id/mapview"
-       android:layout_width="match_parent"
-       android:layout_height="400dp"
-       tools:ignore="MissingConstraints" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/baseline_add_location_24">
 
 
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="검색어 입력"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textSize="12sp"
+                android:drawableEnd="@drawable/baseline_search_24"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- 단측 검색 아이콘들 -->
+        <HorizontalScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/toolbar"
+            android:scrollbars="none">
+
+
+            <!-- 별도의 xml 레이아웃파일에 분리하여 작성하고 가져와 보여주기 -->
+            <!--  id설정이 있어야 layout 하위 뷰들의 id를 binding 할 수 있음  -->
+            <include
+                android:id="@+id/layout_choice"
+                layout="@layout/choice_list" />
+
+
+        </HorizontalScrollView>
+
+
+        <com.kakao.vectormap.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@+id/scroll_view"
+            android:layout_marginTop="39dp" />
+
+
+        <FrameLayout
+            android:id="@+id/container_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/scroll_view"
+            android:layout_marginTop="39dp" />
+
+    </RelativeLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
