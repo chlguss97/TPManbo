@@ -34,11 +34,11 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <!-- 단측 검색 아이콘들 -->
+
         <HorizontalScrollView
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="58dp"
             android:layout_below="@+id/toolbar"
             android:scrollbars="none">
 
@@ -56,17 +56,13 @@
         <com.kakao.vectormap.MapView
             android:id="@+id/map_view"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_below="@+id/scroll_view"
-            android:layout_marginTop="39dp" />
+            android:layout_height="300dp"
+            android:layout_below="@+id/et_search"
+            android:layout_marginTop="64dp"
+            tools:ignore="NotSibling" />
 
 
-        <FrameLayout
-            android:id="@+id/container_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/scroll_view"
-            android:layout_marginTop="39dp" />
+
 
     </RelativeLayout>
 
