@@ -1,6 +1,8 @@
 package com.hyun.tpmanbo.activities
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -16,6 +18,9 @@ class LoginEmailActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityLoginEmailBinding
+    private lateinit var sharedPreferences: SharedPreferences
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +28,8 @@ class LoginEmailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
+
 
         binding.btnSignin.setOnClickListener {
             val email = binding.etId.text.toString().trim() // Firebase에 저장된 이메일 주소
@@ -32,6 +39,12 @@ class LoginEmailActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "로그인을 성공하였습니다", Toast.LENGTH_SHORT).show()
+
+                        // 로그인 성공 시 이메일과 비밀번호를 SharedPreferences에 저장합니다.
+                        val editor = sharedPreferences.edit()
+                        editor.putString("email", email)
+                        editor.putString("password", password)
+                        editor.apply()
 
                         val user = auth.currentUser
                         user?.let {
