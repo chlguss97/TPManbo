@@ -2,6 +2,7 @@ package com.hyun.tpmanbo.activities
 
 
 import android.Manifest
+import android.animation.ObjectAnimator
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,9 @@ import com.hyun.tpmanbo.fragment.BoardFragment
 import com.hyun.tpmanbo.fragment.RankFragment
 import com.hyun.tpmanbo.fragment.MapFragment
 import com.hyun.tpmanbo.fragment.StepFragment
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -110,6 +114,61 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+
+//    //카카오 로컬 검색 API를 활용하여 키워드로 장소를 검색하는 기능 메소드
+//    private fun searchPlaces(){
+//        Toast.makeText(this, "$searchQuery\n${myLocation?.latitude},${myLocation?.longitude}", Toast.LENGTH_SHORT).show()
+//
+//        // 레트로핏을 이용한 REST API 작업 수행 - GET방식
+//        val retrofit= RetrofitHelper.getRetrofitInstance("https://dapi.kakao.com")
+//        val retrofitApiService= retrofit.create(RetrofitApiService::class.java)
+//        val call= retrofitApiService.searchPlace(searchQuery,myLocation?.longitude.toString(), myLocation?.latitude.toString())
+//        call.enqueue(object : Callback<KakaoSearchPlaceResponce> {
+//            override fun onResponse(
+//                call: Call<KakaoSearchPlaceResponce>,
+//                response: Response<KakaoSearchPlaceResponce>
+//            ) {
+//                //응답받은 json을 파싱한 객체를 참조하기
+//                searchPlaceResponce= response.body()
+//
+//                //먼저 데이터가 온전히 잘 왔는지 파악해보기
+//                val meta: PlaceMeta? = searchPlaceResponce?.meta
+//                val document: List<Place>? = searchPlaceResponce?.documents
+//
+//                //AlertDialog.Builder(this@MainActivity).setMessage("${meta?.total_count}\n${document?.get(0)?.place_name}").create().show()
+//
+//                //무조건 검색이 완료되면 '리스트 형태로 먼저 보여주도록 할 것임.
+//                binding.bnv.selectedItemId= R.id.menu_bnv_list
+//
+//                //fab 버튼 원위치
+//                ObjectAnimator.ofFloat(binding.fabRefresh,"translationY", 0f).start()
+//                ObjectAnimator.ofFloat(binding.fabRefresh,"rotationX", 0f).start()
+//
+//            }
+//
+//            override fun onFailure(call: Call<KakaoSearchPlaceResponce>, t: Throwable) {
+//                Toast.makeText(this@MainActivity, "서버 오류가 있습니다.", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
+//
+////        val call= retrofitApiService.searchPlaceToString(searchQuery, myLocation?.longitude.toString(), myLocation?.latitude.toString())
+////        call.enqueue(object : Callback<String>{
+////            override fun onResponse(call: Call<String>, response: Response<String>) {
+////                val s= response.body()
+////                AlertDialog.Builder(this@MainActivity).setMessage(s).create().show()
+////            }
+////
+////            override fun onFailure(call: Call<String>, t: Throwable) {
+////                Toast.makeText(this@MainActivity, "error : ${t.message}", Toast.LENGTH_SHORT).show()
+////            }
+////        })
+//
+//
+//    }
+
+
 
 
     }
